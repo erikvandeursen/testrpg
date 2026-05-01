@@ -22,6 +22,8 @@ pnpm dev
 
 The dev server runs on [http://localhost:3000](http://localhost:3000).
 
+> **Note:** `pnpm dev` serves only the Vite frontend — the `/api/*` serverless functions are not available. To run the full stack locally (UI + API), install the [Vercel CLI](https://vercel.com/docs/cli) and run `vercel dev` instead. This starts both the frontend and the serverless functions on the same port.
+
 Other scripts:
 
 - `pnpm build`, type-checks the project and produces a production build in `dist/`
@@ -34,7 +36,49 @@ Other scripts:
 |-------|---------|
 | `/` | Landing page with intro and links to `/play` and the API endpoint overview |
 | `/play` | Create a character, choose a build, complete the four tasks to level up |
-| `/api` | Documentation page for the planned API endpoints |
+| `/api` | Documentation page for the API endpoints |
+
+## API endpoints
+
+The serverless functions live in `api/` and are deployed by Vercel alongside the static frontend.
+
+### `GET /api/builds`
+
+Returns all builds as a JSON object keyed by name.
+
+```
+GET /api/builds
+GET /api/builds?build=thief
+```
+
+| Status | Condition |
+|--------|-----------|
+| 200 | Success — returns one or all builds |
+| 404 | Unknown `build` query parameter value |
+
+### `POST /api/builds`
+
+Creates a new custom build. Custom builds are held in memory and reset on cold start — intentional for the test casus.
+
+```json
+{
+  "build": {
+    "name": "string",
+    "strength": "number",
+    "agility": "number",
+    "wisdom": "number",
+    "magic": "number"
+  }
+}
+```
+
+Constraints: `name` must be unique (case-insensitive). Each stat must be a non-negative integer ≤ 10. The sum of all four stats cannot exceed 10.
+
+| Status | Condition |
+|--------|-----------|
+| 201 | Build created — returns `{ build: { ... } }` |
+| 400 | Invalid body or constraint violation |
+| 409 | Name already taken |
 
 ## Acceptance criteria for /play
 
