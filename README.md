@@ -101,9 +101,11 @@ These are the rules the test automation casus is built around:
 - The page shows a build selector with the four available builds (thief, knight, mage, brigadier).
 - Selecting a different build resets the equipment slots and repopulates the bag with items for that build.
 - The bag contains four items: two weapons and two armor pieces for the selected build.
-- Dragging a weapon item onto the weapon slot equips it, removes it from the bag, and shows a success toast.
-- Dragging an armor item onto the armor slot equips it, removes it from the bag, and shows a success toast.
-- Dragging an item onto the wrong slot type (e.g. a weapon into the armor slot) shows an error toast and leaves the item in the bag.
+- There are two weapon slots and two armor slots, allowing all four items to be equipped simultaneously.
+- Dragging a weapon item onto a weapon slot equips it, removes it from the bag, and shows a success toast.
+- Dragging an armor item onto an armor slot equips it, removes it from the bag, and shows a success toast.
+- Dragging an item onto the wrong slot type (e.g. a weapon into an armor slot) shows an error toast and leaves the item in the bag.
+- Dragging an item onto a slot that is already occupied shows an error toast and leaves the item in the bag.
 - Once all four items are equipped the bag shows an "All items equipped" message.
 
 ## Test automation hooks
@@ -154,8 +156,10 @@ Every interactive element on the page has a `data-testid` attribute. The naming 
 | `inventory-build-select` | Build selector dropdown on the inventory page |
 | `inventory-bag` | The bag container holding unequipped items |
 | `inventory-item` | A draggable item in the bag |
-| `inventory-slot-weapon` | The weapon equipment slot (drop target) |
-| `inventory-slot-armor` | The armor equipment slot (drop target) |
+| `inventory-slot-weapon-1` | First weapon equipment slot (drop target) |
+| `inventory-slot-weapon-2` | Second weapon equipment slot (drop target) |
+| `inventory-slot-armor-1` | First armor equipment slot (drop target) |
+| `inventory-slot-armor-2` | Second armor equipment slot (drop target) |
 | `equipped-item` | An item that has been dropped into an equipment slot |
 | `toast-container` | The container holding all active toasts |
 | `toast` | A single auto-dismissing toast notification |
