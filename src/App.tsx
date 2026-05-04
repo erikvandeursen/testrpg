@@ -4,6 +4,8 @@ import Header from "@/components/layout/header";
 import HomePage from "@/pages/home";
 import PlayPage from "@/pages/play";
 import ApiPage from "@/pages/api";
+import InventoryPage from "@/pages/inventory";
+import { ToastContainer } from "@/components/ui/toast";
 
 export default function App() {
   return (
@@ -29,11 +31,13 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/play" element={<PlayPage />} />
                 <Route path="/api" element={<ApiPage />} />
+                <Route path="/inventory" element={<InventoryPage />} />
               </Routes>
             </div>
           </div>
         </main>
       </div>
+      <ToastContainer />
     </div>
   );
 }

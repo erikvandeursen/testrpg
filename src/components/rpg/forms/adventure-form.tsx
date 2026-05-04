@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { useStore } from "@/components/rpg/store";
+import { useToastStore } from "@/components/ui/toast";
 
 interface TaskProps {
   title: string;
@@ -43,11 +44,15 @@ function TaskLabel({ value, show, task }: { value: string; show: boolean; task: 
 function Clicker() {
   const [clicks, setClicks] = useState<number>(0);
   const increaseLevel = useStore((state) => state.increaseLevel);
+  const addToast = useToastStore((s) => s.addToast);
   const maxClicks = 5;
   const disabled = clicks === maxClicks;
   const onClick = () => {
     setClicks((prev) => prev + 1);
-    if (clicks === 4) increaseLevel();
+    if (clicks === 4) {
+      increaseLevel();
+      addToast("Click challenge complete! +1 Level");
+    }
   };
 
   return (
@@ -63,9 +68,11 @@ function Clicker() {
 function Uploader() {
   const [value, setValue] = useState<string>("");
   const increaseLevel = useStore((state) => state.increaseLevel);
+  const addToast = useToastStore((s) => s.addToast);
   const uploadHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     increaseLevel();
+    addToast("File received! +1 Level");
   };
 
   return (
@@ -87,16 +94,19 @@ function Typer() {
   const [value, setValue] = useState<string>("");
   const increaseLevel = useStore((state) => state.increaseLevel);
   const activateBerserk = useStore((state) => state.activateBerserk);
+  const addToast = useToastStore((s) => s.addToast);
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
 
     if (event.target.value === "Lorem Ipsum") {
       increaseLevel();
+      addToast("Spell cast! +1 Level");
       return;
     }
 
     if (event.target.value.toLowerCase() === "all your base are belong to us") {
       activateBerserk();
+      addToast("BERSERK MODE ACTIVATED!", "error");
     }
   };
 
@@ -118,12 +128,14 @@ function SliderTask() {
   const [value, setValue] = useState<number[]>([0]);
   const [disabled, setDisabled] = useState<boolean>(false);
   const increaseLevel = useStore((state) => state.increaseLevel);
+  const addToast = useToastStore((s) => s.addToast);
 
   const onValueChange = (next: number[]) => {
     setValue(next);
     if (next[0] === 100) {
       setDisabled(true);
       increaseLevel();
+      addToast("Balance mastered! +1 Level");
     }
   };
 

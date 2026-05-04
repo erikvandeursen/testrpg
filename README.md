@@ -34,6 +34,7 @@ Other scripts:
 |-------|---------|
 | `/` | Landing page with intro and links to `/play` and the API endpoint overview |
 | `/play` | Create a character, choose a build, complete the four tasks to level up |
+| `/inventory` | Drag-and-drop inventory screen — equip items from the bag into weapon and armor slots |
 | `/api` | Documentation page for the API endpoints |
 
 ## API endpoints
@@ -102,6 +103,7 @@ Every interactive element on the page has a `data-testid` attribute. The naming 
 |---------------|---------|
 | `site-header` | The sticky header bar |
 | `home-link` | TestRPG logo link in the header |
+| `inventory-link` | Inventory link in the header |
 | `api-link` | API link in the header |
 | `login-button` | Login button in the header (when logged out) |
 | `logout-button` | Logout button in the header (when logged in) |
@@ -137,8 +139,19 @@ Every interactive element on the page has a `data-testid` attribute. The naming 
 | `play-again-button` | Reset button after reaching max level |
 | `api-explainer` | Each endpoint card on `/api` |
 | `copy-curl-button` | Copy-to-clipboard button on the GET endpoint card |
+| `inventory-page` | Main container of the `/inventory` page |
+| `inventory-build-select` | Build selector dropdown on the inventory page |
+| `inventory-bag` | The bag container holding unequipped items |
+| `inventory-item` | A draggable item in the bag |
+| `inventory-slot-weapon` | The weapon equipment slot (drop target) |
+| `inventory-slot-armor` | The armor equipment slot (drop target) |
+| `equipped-item` | An item that has been dropped into an equipment slot |
+| `toast-container` | The container holding all active toasts |
+| `toast` | A single auto-dismissing toast notification |
 
 In addition, the level/stats progress bars are tagged with `data-character-stats="<label>"` and the task confirmation labels with `data-task="<task>"` for tests that need to assert against a specific stat or task.
+
+Inventory items also carry `data-item-name` (the item's internal name, e.g. `leather_armor`) and `data-item-type` (`weapon` or `armor`) for targeted assertions. Toasts carry `data-toast-type` (`success`, `error`, or `info`).
 
 ## Deployment
 

@@ -10,6 +10,13 @@ export default function Header() {
         </Link>
         <nav className="flex items-center space-x-4">
           <Link
+            data-testid="inventory-link"
+            to="/inventory"
+            className="text-white text-sm font-medium hover:underline"
+          >
+            Inventory
+          </Link>
+          <Link
             data-testid="api-link"
             to="/api"
             className="text-white text-sm font-medium hover:underline"
