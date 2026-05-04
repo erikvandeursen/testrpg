@@ -90,10 +90,21 @@ These are the rules the test automation casus is built around:
 - Typing `Lorem Ipsum` in the typer-task levels up the character and shows a confirmation message.
 - Moving the slider all the way to the right levels up the character and shows a confirmation message.
 - After completing each task, the related input is set to disabled.
+- Completing a task shows a toast notification that disappears automatically after 3 seconds.
 
 ### Bonus
 
 - Easter egg: typing `all your base are belong to us` in the typer-task before completing it activates berserk mode, which makes every subsequent level-up max out the stats.
+
+## Acceptance criteria for /inventory
+
+- The page shows a build selector with the four available builds (thief, knight, mage, brigadier).
+- Selecting a different build resets the equipment slots and repopulates the bag with items for that build.
+- The bag contains four items: two weapons and two armor pieces for the selected build.
+- Dragging a weapon item onto the weapon slot equips it, removes it from the bag, and shows a success toast.
+- Dragging an armor item onto the armor slot equips it, removes it from the bag, and shows a success toast.
+- Dragging an item onto the wrong slot type (e.g. a weapon into the armor slot) shows an error toast and leaves the item in the bag.
+- Once all four items are equipped the bag shows an "All items equipped" message.
 
 ## Test automation hooks
 
