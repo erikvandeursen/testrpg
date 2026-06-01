@@ -170,13 +170,13 @@ Inventory items also carry `data-item-name` (the item's internal name, e.g. `lea
 
 ## Deployment
 
-The project includes a `vercel.json` with SPA rewrites so that React Router routes resolve correctly when deep-linking on Vercel.
+The project includes a `vercel.json` with SPA rewrites so that React Router routes resolve correctly when deep-linking on Vercel. The `api/builds.ts` serverless function is deployed automatically alongside the frontend.
 
 ```bash
 pnpm build
 ```
 
-The output in `dist/` can be deployed as a static site to Vercel, Netlify, GitHub Pages, or any static host.
+The output in `dist/` can be deployed to Vercel. The API endpoints are served as Vercel serverless functions from `api/` — other static hosts (Netlify, GitHub Pages) will not serve the API.
 
 ## Credits
 
