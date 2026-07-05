@@ -120,9 +120,11 @@ class AdventureFeature extends Page {
       );
       await this.uploaderInput.setValue(remoteFilePath);
     } catch (error) {
-      throw new Error(
-        `Failed to upload file at "${filepath}": ${(error as Error).message}`, { cause: error },
+      const err = new Error(
+        `Failed to upload file at "${filepath}": ${(error as Error).message}`,
       );
+      (err as Error & { cause: Error }).cause = error as Error;
+      throw err;
     }
   }
 
