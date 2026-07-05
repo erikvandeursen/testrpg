@@ -2,6 +2,8 @@
 
 TestRPG is a small RPG-styled web app meant to be automated through a Test Automation Framework like [Playwright](https://playwright.dev/) or [Cypress](https://www.cypress.io/). This is the React + Vite + TypeScript rebuild of the [original TestCoders/testrpg](https://github.com/TestCoders/testrpg) project, used as a test automation casus at TestCoders Noord.
 
+[![CI workflow](https://github.com/erikvandeursen/testrpg/actions/workflows/ci.yml/badge.svg)](https://github.com/erikvandeursen/testrpg/actions/workflows/ci.yml)
+
 ## Stack
 
 - React 18 with TypeScript
