@@ -47,14 +47,8 @@ jobs:
       - name: Clean install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Start app
-        run: pnpm run start:ci &
-
-      - name: Wait for app
-        run: npx wait-on http://localhost:3000 -t 60000
-
       - name: Test
-        run: pnpm run wdio:ci
+        run: pnpm run test:ci
 
       - name: Upload Logs
         uses: actions/upload-artifact@v4
