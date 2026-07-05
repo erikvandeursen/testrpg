@@ -7,7 +7,20 @@
     "dev": "concurrently --names \"api,vite\" --prefix-colors \"cyan,green\" \"tsx watch server.ts\" \"vite\"",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "wdio:local": "wdio run ./tests/config/wdio.conf.ts",
+    "wdio:ci": "wdio run ./tests/config/wdio.ci.conf.ts",
+    "lint": "eslint tests",
+    "lint:fix": "eslint tests --fix",
+    "format": "prettier --write tests",
+    "format:check": "prettier --check tests",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "tests/**/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -17,6 +30,10 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slider": "^1.1.2",
     "@radix-ui/react-slot": "^1.0.2",
+    "@wdio/globals": "^9.28.0",
+    "@wdio/jasmine-framework": "^9.29.0",
+    "@wdio/local-runner": "^9.28.0",
+    "@wdio/spec-reporter": "^9.28.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.344.0",
@@ -26,22 +43,35 @@
     "react-router-dom": "^6.22.3",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "webdriverio": "^9.29.1",
     "zod": "^3.22.4",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
+    "@types/jasmine": "^6.0.0",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "@typescript-eslint/parser": "^8.62.1",
     "@vitejs/plugin-react": "^4.2.1",
+    "@wdio/cli": "^9.28.0",
     "autoprefixer": "^10.4.18",
     "concurrently": "^9.2.1",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-wdio": "^9.29.0",
     "express": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
     "postcss": "^8.4.35",
+    "prettier": "^3.8.4",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.62.1",
     "vite": "^5.1.4"
-  }
+  },
+  "packageManager": "pnpm@11.9.0+sha512.bd682d5d03fe525ef7c9fd6780c6884d1e756ac4c9c9fe00c538782824310dcf90e3ddc4f53835f06dfaebd5085e41855e0bcbb3b60de2ac5bbab89e5036f03b"
 }
