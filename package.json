@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "start:ci": "vite preview --port 3000",
     "wdio:ci": "wdio run ./tests/config/wdio.ci.conf.ts",
     "wdio:ui": "wdio run ./tests/config/wdio.conf.ts",
     "lint": "eslint tests",
