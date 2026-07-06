@@ -198,7 +198,7 @@ There are 3 specs covering functionality on the home and play pages:
 
 ## Stack
 
-WebdriverIO 9 & Jasmine.
+WebdriverIO 9 and Jasmine.
 
 Node is set to the latest LTS, using NVM (.nvmrc)
 
@@ -218,11 +218,12 @@ The project contains the following folders:
 Use the following commands to run the specs:
 
 - `pnpm run wdio:ci`: Run all specs with CI config (headless)
-- `pnpm run wdio:ui`: Run all specs with default config locally
+- `pnpm run wdio:ui`: Run all specs with default config locally (UI)
 - `pnpm run wdio:<local/ci> --spec=<tests/spec/filename>`: Run a single spec by passing in relative path and filename
 
 ## Additional commands
 
 For code quality purposes, the following commands can be run:
+
 - `pnpm run format`: Format all files in the tests folder using Prettier
 - `pnpm run lint`: Lint all files in the tests folder using ESLint

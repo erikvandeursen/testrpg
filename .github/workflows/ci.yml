@@ -47,7 +47,7 @@ jobs:
       - name: Clean install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Test
+      - name: Run specs
         run: pnpm run test:ci
 
       - name: Upload Logs

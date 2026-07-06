@@ -113,7 +113,7 @@ class AdventureFeature extends Page {
     if (!filepath) {
       throw new Error("No file path provided");
     }
-    // Upload file user using WDIO native uploadFile command
+    // Upload file using WDIO native uploadFile command
     try {
       const remoteFilePath = await (browser).uploadFile(
         filepath,

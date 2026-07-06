@@ -107,7 +107,7 @@ describe("Home and play pages", () => {
       await CharacterFeature.setCharacterBuild("Knight");
     });
 
-    it("should contain a Start! button, user can click", async () => {
+    it("should contain a Start! button, button can be clicked", async () => {
       await expect(CharacterFeature.characterStartButton).toHaveText("Start!");
       await CharacterFeature.characterStartButton.click();
     });
