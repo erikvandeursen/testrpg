@@ -1,5 +1,6 @@
 import { $, browser } from "@wdio/globals";
 import Page from "../page/page.js";
+import Utils from '../utils/utils.js'
 
 const BREAKPOINT_WIDTH = 1216;
 const CLICK_PAUSE_MS = 100;
@@ -133,7 +134,7 @@ class AdventureFeature extends Page {
    **/
   public async dragSlider(): Promise<void> {
     // Get the viewport size to determine slider input width
-    const viewportWidth: number = await this.getViewportWidth();
+    const viewportWidth: number = await Utils.getViewportWidth();
     const inputWidth: number = await this.sliderInput.getSize("width");
     const origin = this.sliderInputSpan;
 
@@ -159,16 +160,6 @@ class AdventureFeature extends Page {
       .down({ button: 0 })
       .up({ button: 0 })
       .perform();
-  }
-
-  /**
-   * Get viewport width
-   **/
-  private async getViewportWidth(): Promise<number> {
-    // Get the width of the viewport
-    const viewportWidth: number = await this.root.getSize("width");
-
-    return viewportWidth;
   }
 }
 
